@@ -3,9 +3,13 @@ const validateUrl = (str) => {
   return urlRegexp.test(str);
 };
 
-const getJsonFromArraybuffer = (data) => JSON.parse(
-  String.fromCharCode.apply(null, new Uint8Array(data)),
-);
+const getJsonFromArraybuffer = (data) => {
+  const text = new Uint8Array(data).reduce(
+    (acc, byte) => acc + String.fromCharCode(byte),
+    '',
+  );
+  return JSON.parse(text);
+};
 
 const getBase64FromArrayBuffer = (data, contentType) => {
   const base64 = btoa(

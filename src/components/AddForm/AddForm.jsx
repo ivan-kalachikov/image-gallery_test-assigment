@@ -81,6 +81,7 @@ const AddForm = ({
       const errorText = errorKey.key ? t(errorKey.key, { error: e }) : t(errorKey);
       setError(errorText);
       changeStatus('failed');
+      throw e;
     }
   };
 
@@ -121,8 +122,8 @@ const AddForm = ({
       {status === 'failed' && <div className="add-form__feedback add-form__feedback_fail">{error}</div>}
       {status === 'succeeded'
       && <div className="add-form__feedback add-form__feedback_success">{t('feedbackMessages.addedSuccessfully')}</div>}
-      <p className="add-form__description">{`Пример json файла: ${window.location.href}/data/gallery-images.json`}</p>
-      <p className="add-form__description">{`Пример изображения:  ${window.location.href}/data/image.jpg`}</p>
+      <p className="add-form__description">{`Пример json файла: ${window.location.href}data/gallery-images.json`}</p>
+      <p className="add-form__description">{`Пример изображения:  ${window.location.href}data/image.jpg`}</p>
     </form>
   );
 };
