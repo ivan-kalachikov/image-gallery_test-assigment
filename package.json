@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "start": "react-scripts start",
-    "build": "GENERATE_SOURCEMAP=false DISABLE_ESLINT_PLUGIN=true ESLINT_NO_DEV_ERRORS=true react-scripts build",
+    "build": "react-scripts build",
     "test": "NODE_OPTIONS=--experimental-vm-modules npx jest --colors",
     "eject": "react-scripts eject",
     "lint": "npx eslint ."
