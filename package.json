@@ -6,9 +6,9 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "NODE_OPTIONS=--experimental-vm-modules npx jest",
     "eject": "react-scripts eject",
-    "ci": "NODE_OPTIONS=--experimental-vm-modules npx jest && npx eslint ."
+    "lint": "npx eslint ."
   },
   "eslintConfig": {
     "extends": [
