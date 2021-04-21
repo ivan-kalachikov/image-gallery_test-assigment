@@ -43,7 +43,7 @@ const ImageGallery = ({
     onDropAccepted,
     maxFiles: 1,
     multiple: false,
-    maxSize: 2e+6,
+    maxSize: 2097152,
     noClick: true,
     noKeyboard: true,
     onDropRejected,
