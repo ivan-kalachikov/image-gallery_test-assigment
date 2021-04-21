@@ -2,7 +2,7 @@ import _ from 'lodash';
 
 const defaultOptions = {
   maxImageHeight: 200,
-  minImagesInRow: 2,
+  minImagesInRow: 1,
   imagesGap: 10,
 };
 
@@ -10,9 +10,9 @@ const calcImageSizesToFillRows = (
   images,
   containerWidth,
   options = defaultOptions,
-  result = [],
 ) => {
-  const imagesCount = images.length;
+  const calculatedImages = [];
+  let notCalculatedImages = images;
   const { maxImageHeight, minImagesInRow, imagesGap } = options;
 
   const getMinHeight = (items) => _.minBy([...items, { height: maxImageHeight }], 'height').height;
@@ -25,32 +25,31 @@ const calcImageSizesToFillRows = (
   });
 
   const fittingRow = (n) => {
-    const imagesForCalculation = _.take(images, n);
-    const otherImages = _.drop(images, n);
+    const imagesForCalculation = _.take(notCalculatedImages, n);
     const minHeight = getMinHeight(imagesForCalculation);
     const itemsWithNormalizedHeight = normalizeHeight(imagesForCalculation, minHeight);
-    if (n > imagesCount) {
-      return [itemsWithNormalizedHeight, otherImages];
+    if (n > notCalculatedImages.length) {
+      return itemsWithNormalizedHeight;
     }
     const totalWidth = _.sumBy(itemsWithNormalizedHeight, 'width');
     if (totalWidth < containerWidth) {
       return fittingRow(n + 1);
     }
     const multiplier = (containerWidth - ((n - 1) * imagesGap)) / totalWidth;
-    const calculatedImages = itemsWithNormalizedHeight.map(({ id, height, width }) => ({
+    return itemsWithNormalizedHeight.map(({ id, height, width }) => ({
       id,
       height: height * multiplier,
       width: width * multiplier,
     }));
-    return [calculatedImages, otherImages];
   };
 
-  const [calculatedImages, notCalculatedImages] = fittingRow(minImagesInRow);
-  if (notCalculatedImages.length !== 0) {
-    return calcImageSizesToFillRows(notCalculatedImages, containerWidth, options,
-      [...result, ...calculatedImages]);
+  while (notCalculatedImages.length !== 0) {
+    const rowResult = fittingRow(minImagesInRow);
+    const n = rowResult.length;
+    calculatedImages.push(...rowResult);
+    notCalculatedImages = _.drop(notCalculatedImages, n);
   }
-  return [...result, ...calculatedImages];
+  return calculatedImages;
 };
 
 export default calcImageSizesToFillRows;
