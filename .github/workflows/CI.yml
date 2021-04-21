@@ -29,7 +29,7 @@ jobs:
       - name: Install, run test and linter
         run: |
           npm ci
-          npm test
-          npm lint
+          npm run test
+          npm run lint
         env:
           CI: true
