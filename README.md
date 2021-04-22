@@ -6,7 +6,7 @@ Task description [is here](https://docs.google.com/document/d/1jVU6m5qKcgXpSd0jC
 
 **developer**: Kalachikov Ivan Mikhailovich
 
-The project deployed to Heroku: https://image-gallery-test-task.herokuapp.com/
+The project deployed to Heroku: https://image-gallery-test-assessment.herokuapp.com/
 
 Additional requirements were added:
  - maximum height of row (200px, can be changed in settings)
