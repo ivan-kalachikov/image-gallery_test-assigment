@@ -1,4 +1,5 @@
 # Test task for Ecwid - the Image Gallery
+[![CI](https://github.com/Ivankalachikov/image-gallery_test-assessment/actions/workflows/CI.yml/badge.svg)](https://github.com/Ivankalachikov/image-gallery_test-assessment/actions/workflows/CI.yml)
 
 Task description [is here](https://docs.google.com/document/d/1jVU6m5qKcgXpSd0jCawymUqeqc2D3x-hD22bKzhLOzc/edit#heading=h.361k2x700n5c)
 
