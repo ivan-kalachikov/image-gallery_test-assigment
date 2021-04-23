@@ -49,10 +49,6 @@ const AddForm = ({
     addImages(data.galleryImages);
   };
 
-  const handleImageData = (base64) => {
-    addImageWithBase64(base64, addImages);
-  };
-
   const handleResponse = (response) => {
     const contentType = response.headers['content-type'];
     const { data } = response;
@@ -62,7 +58,7 @@ const AddForm = ({
       return;
     }
     if (/^image.*/.test(contentType)) {
-      handleImageData(getBase64FromArrayBuffer(data, contentType));
+      addImageWithBase64(getBase64FromArrayBuffer(data, contentType), addImages);
       updateUrl('');
       return;
     }
