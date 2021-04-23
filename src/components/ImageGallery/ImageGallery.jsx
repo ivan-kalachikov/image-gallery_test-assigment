@@ -51,11 +51,11 @@ const ImageGallery = ({
   });
   return (
     <div className="image-gallery" {...getRootProps()}>
-      <input {...getInputProps()} />
+      <input className="image-gallery__file-input" {...getInputProps()} />
       {
         isDragActive
-          ? <p className="dropzone dropzone_drag">{t('ui.dropzoneDrag')}</p>
-          : <p className="dropzone">{t('ui.dropzone')}</p>
+          ? <p className="image-gallery__dropzone-element image-gallery__dropzone-element_drag">{t('ui.dropzoneDrag')}</p>
+          : <p className="image-gallery__dropzone-element">{t('ui.dropzone')}</p>
       }
       {rawImages.length > 0 && rawImages.map(({ id, url }) => (
         <ImageItem
