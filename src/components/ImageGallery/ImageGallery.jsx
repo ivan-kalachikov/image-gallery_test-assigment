@@ -5,7 +5,7 @@ import { useDropzone } from 'react-dropzone';
 import { useTranslation } from 'react-i18next';
 import * as actions from '../../actions/index';
 import ImageItem from '../ImageItem/ImageItem';
-import { addImageWithBase64 } from '../../utils/index';
+import { addImageWithBase64, getJsonFromArraybuffer } from '../../utils/index';
 
 const mapStateToProps = (state) => {
   const props = {
@@ -32,10 +32,23 @@ const ImageGallery = ({
   const onDropAccepted = useCallback((acceptedFiles) => {
     const file = acceptedFiles[0];
     const reader = new FileReader();
-    reader.addEventListener('load', () => {
-      addImageWithBase64(reader.result, addImages);
-    }, false);
-    reader.readAsDataURL(file);
+    if (file.type === 'application/json') {
+      reader.addEventListener('load', () => {
+        const data = getJsonFromArraybuffer(reader.result);
+        if (!data.galleryImages) {
+          const noImagesError = new Error();
+          noImagesError.errorKey = 'noImages';
+          throw noImagesError;
+        }
+        addImages(data.galleryImages);
+      }, false);
+      reader.readAsArrayBuffer(file);
+    } else if (file.type.indexOf('image/') === 0) {
+      reader.addEventListener('load', () => {
+        addImageWithBase64(reader.result, addImages);
+      }, false);
+      reader.readAsDataURL(file);
+    }
     setError(null);
     changeStatus('succeeded');
   });
@@ -47,7 +60,7 @@ const ImageGallery = ({
     noClick: true,
     noKeyboard: true,
     onDropRejected,
-    accept: ['image/*'],
+    accept: ['image/*', 'application/json'],
   });
   return (
     <div className="image-gallery" {...getRootProps()}>

@@ -11,7 +11,6 @@ test('calculate images sizes with containerWidth', () => {
   };
   const containerWidth = 860;
   const result = calcImageSizesToFillRows(galleryImages, containerWidth, calcOptions);
-  console.log(result);
   const calcWidthOfImages = (start, end) => {
     const items = _.slice(result, start, end);
     const width = _.sumBy(items, 'width');

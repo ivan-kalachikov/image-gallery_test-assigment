@@ -14,7 +14,7 @@ export default {
       removeImage: 'Удалить',
       uploadFormUrlPlaceholder: 'Введите адрес изображения, или json файла',
       dropzoneDrag: 'Отпустите файл здесь',
-      dropzone: 'Или перетащите изображение сюда (до 2 мб)',
+      dropzone: 'Или перетащите json / изображение сюда (до 2 мб)',
     },
   },
 };
