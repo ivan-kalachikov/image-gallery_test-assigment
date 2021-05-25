@@ -1,7 +1,7 @@
 # Test task for Ecwid - the Image Gallery
 [![CI](https://github.com/Ivankalachikov/image-gallery_test-assessment/actions/workflows/CI.yml/badge.svg)](https://github.com/Ivankalachikov/image-gallery_test-assessment/actions/workflows/CI.yml)
 
-Task description [is here](https://docs.google.com/document/d/1jVU6m5qKcgXpSd0jCawymUqeqc2D3x-hD22bKzhLOzc/edit#heading=h.361k2x700n5c)
+Task description [is here](https://docs.google.com/document/d/1vgsJVJJ6iqzv32zPdm7DLRof2ovMZ9xFRZ79Cs_9RbA/edit?usp=sharing)
 
 ---
 
@@ -24,7 +24,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 ### `npm run test`
 
-Launches the tests. (testing of function which calculate images sizes)
+Launches the tests. (test calculate images sizes function)
 
 ### `npm run build`
 
