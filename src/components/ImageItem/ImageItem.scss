@@ -1,26 +1,26 @@
 .image-gallery {
+  &__remove-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    color: #444;
+    font-size: 30px;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+
   &__item {
     position: relative;
     margin-right: 10px;
     margin-bottom: 10px;
     background: none;
-
-    &__remove-btn {
-      position: absolute;
-      top: 0;
-      right: 0;
-      z-index: 2;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 40px;
-      height: 40px;
-      color: #444;
-      font-size: 30px;
-      cursor: pointer;
-      opacity: 0;
-      transition: opacity 0.2s;
-    }
 
     &__image {
       display: inline-block;
